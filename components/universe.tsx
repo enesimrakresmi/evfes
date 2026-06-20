@@ -91,8 +91,9 @@ export default function Universe() {
         <div className="absolute bottom-[10%] left-[48%] h-56 w-56 rounded-full bg-stargold/7 blur-3xl" />
       </motion.div>
 
-      <div className="pointer-events-none absolute left-4 top-4 z-20 rounded-full border border-white/15 bg-black/35 px-4 py-2 text-sm text-white/82 backdrop-blur-md sm:left-6 sm:top-6">
-        Keşfedilen Anılar:{" "}
+      <div className="pointer-events-none absolute left-3 top-3 z-20 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-xs text-white/75 backdrop-blur-md sm:left-6 sm:top-6 sm:px-4 sm:py-2 sm:text-sm">
+        <span className="hidden sm:inline">Keşfedilen Anılar: </span>
+        <span className="sm:hidden">✦ </span>
         <span className="font-semibold text-stargold">
           {discovered.size} / {memories.length}
         </span>
@@ -121,20 +122,20 @@ export default function Universe() {
               type="button"
               aria-label={`${memory.title} anısını aç`}
               onClick={() => openMemory(memory)}
-              className="group absolute grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full outline-none"
+              className="group absolute grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full outline-none sm:h-8 sm:w-8"
               style={{ left: `${memory.x}%`, top: `${memory.y}%` }}
             >
               <span
-                className="absolute h-2.5 w-2.5 rounded-full transition duration-300 group-hover:scale-150 group-focus-visible:scale-150"
+                className="absolute h-3 w-3 rounded-full transition duration-300 group-hover:scale-150 group-active:scale-150 group-focus-visible:scale-150 sm:h-2.5 sm:w-2.5"
                 style={{
                   background: memory.color,
                   boxShadow: `0 0 18px ${memory.color}, 0 0 42px ${memory.color}`
                 }}
               />
               <span
-                className={`absolute h-7 w-7 rounded-full border transition ${
+                className={`absolute h-9 w-9 rounded-full border transition sm:h-7 sm:w-7 ${
                   isOpen ? "border-stargold/55" : "border-white/25"
-                } group-hover:border-white/80`}
+                } group-hover:border-white/80 group-active:border-white/80`}
               />
             </button>
           );
@@ -144,14 +145,14 @@ export default function Universe() {
       {!introDone ? <IntroParticles onComplete={() => setIntroDone(true)} /> : null}
 
       <motion.div
-        className="pointer-events-none absolute bottom-5 left-0 right-0 z-20 flex justify-center px-6 sm:bottom-7"
+        className="pointer-events-none absolute bottom-4 left-0 right-0 z-20 flex justify-center px-5 sm:bottom-7 sm:px-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: introDone ? 1 : 0 }}
         transition={{ duration: 1.8, delay: 0.4 }}
       >
-        <p className="universe-quote text-center font-display text-sm italic text-white/38 sm:text-base">
+        <p className="universe-quote text-center font-display text-[11px] italic leading-relaxed text-white/35 sm:text-sm">
           evrenimiz hâlâ genişlemeye devam ediyorsa,{" "}
-          <span className="text-white/55">hâlâ doğru yerdesin demektir.</span>
+          <span className="text-white/52">hâlâ doğru yerdesin demektir.</span>
         </p>
       </motion.div>
 
